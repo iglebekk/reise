@@ -76,7 +76,7 @@ Sterke suksesskriterier gjør at AI-en kan jobbe selvstendig uten å gjette. Sva
 
 - Default: Velg innebygd Laravel/Eloquent før custom kode.
 - Default: Velg Spatie-pakker før andre tredjepartspakker når behovet dekkes.
-- Default: Bruk Bootstrap 6 alpha for styling og innebygde UI-komponenter, innkapslet i app-spesifikke Blade-komponenter.
+- Default: Bruk Bootstrap 5.3 for styling og innebygde UI-komponenter, innkapslet i app-spesifikke Blade-komponenter.
 - Default: Installer alltid Laravel Boost MCP Tools for rask innsikt i codebase og debugging (https://laravel.com/ai/boost)
 
 ## CRUDdy by Design (obligatorisk standard)
@@ -178,7 +178,7 @@ Sterke suksesskriterier gjør at AI-en kan jobbe selvstendig uten å gjette. Sva
 ### Frontend
 
 - **Blade** templates med komponentbasert arkitektur
-- **Bootstrap 6.0.0-alpha.1** for styling og UI-komponenter (alpha; følg offisiell dokumentasjon for gjeldende status og [nettleserstøtte](https://getbootstrap.com/docs/6.0/getting-started/browsers-devices/))
+- **Bootstrap 5.3** for styling og UI-komponenter (se [nettleserstøtte](https://getbootstrap.com/docs/5.3/getting-started/browsers-devices/))
 - **Vite** for asset bundling
 - Frontend-design skal alltid tenkes og bygges mobile first.
 - Egenprodusert frontend bygges med app-spesifikke Blade-komponenter og lokaliserte tekster. Sidevisninger komponerer komponenter i stedet for å inneholde rå HTML-markup.
@@ -186,7 +186,7 @@ Sterke suksesskriterier gjør at AI-en kan jobbe selvstendig uten å gjette. Sva
 Installer Bootstrap i et Laravel-prosjekt med npm og bruk prosjektets eksisterende Vite-oppsett:
 
 ```bash
-npm install bootstrap@6.0.0-alpha.1
+npm install bootstrap@^5.3 @popperjs/core
 ```
 
 Importer Bootstrap-stilarket fra `resources/css/app.css` og la layout-komponenten laste Vite-filene med `@vite(['resources/css/app.css', 'resources/js/app.js'])`:
@@ -195,7 +195,7 @@ Importer Bootstrap-stilarket fra `resources/css/app.css` og la layout-komponente
 @import 'bootstrap/dist/css/bootstrap.min.css';
 ```
 
-Importer JavaScript fra `bootstrap` i `resources/js/app.js` bare når interaktive Bootstrap-komponenter trengs. Ikke legg JavaScript i Blade-visninger. Se [Bootstrap install](https://getbootstrap.com/docs/6.0/getting-started/install/) og [Bootstrap med Vite](https://getbootstrap.com/docs/6.0/guides/vite/) for oppsett og oppdaterte imports.
+Importer JavaScript fra `bootstrap` i `resources/js/app.js` bare når interaktive Bootstrap-komponenter trengs. Ikke legg JavaScript i Blade-visninger. Se [Bootstrap download](https://getbootstrap.com/docs/5.3/getting-started/download/) og [Bootstrap med Vite](https://getbootstrap.com/docs/5.3/getting-started/vite/) for oppsett og oppdaterte imports.
 
 ### Testing & Kvalitet
 
@@ -205,7 +205,7 @@ Importer JavaScript fra `bootstrap` i `resources/js/app.js` bare når interaktiv
 
 ### Komponentbibliotek
 
-- **Bootstrap 6 alpha** - Standard for komponenter, grid og utilities i egenprodusert frontend.
+- **Bootstrap 5.3** - Standard for komponenter, grid og utilities i egenprodusert frontend.
 - **Spatie-pakker** - Foretrukket tredjeparts-leverandør (Media Library, Permissions, etc.)
 
 ## 🏗️ Arkitekturprinsipper
@@ -517,13 +517,13 @@ Selve Bootstrap-markupen hører hjemme i komponenten, for eksempel `resources/vi
 </x-form>
 ```
 
-### Bootstrap 6 Mønstre
+### Bootstrap 5.3 Mønstre
 
 - Bruk Bootstrap-komponenter for vanlige UI-mønstre og Bootstrap grid for responsive sideoppsett.
 - Bruk Bootstrap utilities for avgrensede spacing-, flex-, display- og typografibehov; legg gjentatte mønstre i app-spesifikke Blade-komponenter.
-- Bygg mobile first med Bootstrap-breakpoints og grid. Sjekk Bootstrap 6-dokumentasjonen før du velger komponentklasser, siden alpha-versjonen kan endres.
+- Bygg mobile first med Bootstrap-breakpoints og grid. Sjekk Bootstrap 5.3-dokumentasjonen før du velger komponentklasser.
 - Bruk Bootstrap CSS-variabler for temaverdier der de dekker behovet. Bruk Sass-variabler og Sass-kildeimport når prosjektet trenger å tilpasse Bootstrap før bygging.
-- Se [komponenter](https://getbootstrap.com/docs/6.0/components/), [grid](https://getbootstrap.com/docs/6.0/layout/grid/), [utilities](https://getbootstrap.com/docs/6.0/utilities/api/) og [CSS-variabler](https://getbootstrap.com/docs/6.0/getting-started/css-variables/) i den offisielle dokumentasjonen.
+- Se [komponenter](https://getbootstrap.com/docs/5.3/components/accordion/), [grid](https://getbootstrap.com/docs/5.3/layout/grid/), [utilities](https://getbootstrap.com/docs/5.3/utilities/api/) og [CSS-variabler](https://getbootstrap.com/docs/5.3/customize/css-variables/) i den offisielle dokumentasjonen.
 
 ## 🧪 Testing med Pest
 
@@ -660,7 +660,7 @@ Dette sikrer at kommandoen kjører uten brukerinput, viktig for automatisering o
 1. **Analyser** - Forstå eksisterende mønstre i codebase
 2. **Plan** - Lag strukturert plan før implementering
 3. **Implementer** - Backend først (routes, request, policy, controller, actions/services ved behov)
-4. **Views** - Bygg med app-spesifikke Blade-komponenter, Bootstrap 6 og mobile first layout
+4. **Views** - Bygg med app-spesifikke Blade-komponenter, Bootstrap 5.3 og mobile first layout
 5. **Lokaliser** - Legg til translation keys
 6. **Test** - Skriv dekkende feature tests
 7. **Format** - Kjør `vendor/bin/pint --dirty --format agent`
@@ -744,7 +744,7 @@ laravel-boost-mcp-get-absolute-url --path="/dashboard"
 
 ### Bootstrap-dokumentasjon for AI-agenter
 
-Før Bootstrap-frontend implementeres, bruk Bootstraps [maskinlesbare dokumentasjonsindeks (`llms.txt`)](https://getbootstrap.com/llms.txt) og [relevante offisielle skills](https://getbootstrap.com/docs/6.0/getting-started/ai/), for eksempel `bootstrap-v6-install`, `bootstrap-vite` og `bootstrap-component`. Velg skill for oppgaven, og kontroller endringene mot Bootstrap-dokumentasjonen. Denne pakken installerer ikke disse skills.
+Før Bootstrap-frontend implementeres, kontroller komponenter, klasser og JavaScript-API mot [Bootstrap 5.3-dokumentasjonen](https://getbootstrap.com/docs/5.3/).
 
 ## 🔐 Laravel MCP Server Best Practices
 
@@ -865,7 +865,6 @@ class ShowProjectTool extends Tool
 
 - Laravel Documentation: https://laravel.com/docs
 - Pest Documentation: https://pestphp.com
-- Bootstrap 6 Documentation: https://getbootstrap.com/docs/6.0/
-- Bootstrap 6 AI documentation and skills: https://getbootstrap.com/docs/6.0/getting-started/ai/
+- Bootstrap 5.3 Documentation: https://getbootstrap.com/docs/5.3/
 - Laravel Best Practices: https://github.com/alexeymezenin/laravel-best-practices
 - Spatie Packages: https://spatie.be/open-source

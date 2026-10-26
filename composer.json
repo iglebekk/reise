@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "iglebekk/laravel-instructions": "^5.0",
+        "iglebekk/laravel-instructions": "^6.0",
         "laravel/fortify": "^1.41",
         "laravel/framework": "^13.17",
         "laravel/mcp": "^1.1",
@@ -63,7 +63,8 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan boost:update --ansi"
+            "@php artisan boost:update --ansi",
+            "@php artisan laravel-instructions:sync --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
