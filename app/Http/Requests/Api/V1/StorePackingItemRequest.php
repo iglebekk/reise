@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Requests\Api\V1;
+
+use App\Models\Trip;
+use Illuminate\Foundation\Http\FormRequest;
+
+class StorePackingItemRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        $user = $this->user();
+        $trip = $user?->currentTenant;
+
+        return $trip instanceof Trip && $user->can('update', $trip);
+    }
+
+    /**
+     * @return array<string, array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'quantity' => ['sometimes', 'required', 'integer', 'min:1'],
+            'comment' => ['sometimes', 'nullable', 'string'],
+            'participant_id' => ['sometimes', 'nullable', 'integer', 'min:1'],
+        ];
+    }
+}
