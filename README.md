@@ -121,8 +121,10 @@ Førsteversjonen fra [`docs/init-instructions.md`](docs/init-instructions.md) er
 - ✅ Nettside: turoversikt og turside med admin-kontroller. Automatisk mørk modus etter systeminnstilling.
 - ✅ REST-API `/api/v1` med Passport og JSON-ressurser ([referanse](docs/api-reference.md)).
 - ✅ MCP-server med OAuth og ni verktøy.
+- ✅ Responsiv nettside kontrollert i Chrome ved 390 px mobilbredde og desktop.
+- ✅ MCP Inspector kontrollert: autentisert klient lister alle ni verktøyene og leser `list_trips`; uautentisert `initialize` avvises med `auth_required` og HTTP `401`.
 - ✅ Søk etter lignende turer med anonymisert inspirasjon (godkjent ordliste, minst tre ulike tureiere).
-- ✅ 202 Pest-tester, 902 assertions, alle grønne (26.10.2026).
+- ✅ 202 Pest-tester, 902 assertions, alle grønne (27.10.2026).
 
 ## Hva mangler
 
@@ -130,12 +132,11 @@ Førsteversjonen fra [`docs/init-instructions.md`](docs/init-instructions.md) er
 
 1. **Ekte e-postutsending.** `MAIL_MAILER=log` lokalt; SMTP/tjeneste for invitasjoner og verifisering er ikke satt opp.
 2. **Deploy-oppsett.** Ingen produksjonsmiljø, database, kø-worker eller scheduler er konfigurert.
-3. **Manuell kontroll.** Nettsiden er ikke visuelt kontrollert på mobilbredde etter Bootstrap-byttet, og MCP er ikke kjørt mot MCP Inspector med autentisert og uautentisert klient.
+3. **Videre manuell kontroll.** Responsiv visning ved 390 px og desktop samt MCP OAuth i Inspector er verifisert. Andre nettlesere, enheter og produksjonsmiljø er ikke kontrollert.
 
 **Kjent avvik og opprydding**
 
-4. **Bootstrap-versjon.** Prosjektet bruker Bootstrap 5.3, men `docs/laravel-instructions.md` og `docs/implementation-plan.md` sier 6.0.0-alpha.1. Dokumentene bør oppdateres – eller koden flyttes til 6 når den er stabil.
-5. **Skjelettrester.** `tests/Feature/ExampleTest.php`, `tests/Unit/ExampleTest.php` og `"name": "laravel/laravel"` i `composer.json`.
+4. **Skjelettrester.** `tests/Feature/ExampleTest.php`, `tests/Unit/ExampleTest.php` og `"name": "laravel/laravel"` i `composer.json`.
 
 **Kjente begrensninger (bevisst i v1)**
 

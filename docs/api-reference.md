@@ -71,7 +71,24 @@ Authorization: Bearer <access-token>
 }
 ```
 
-The response is a Laravel resource with a `data` object, including `id`, the supplied trip fields, and derived `duration_days`.
+The `201 Created` response contains a Laravel resource `data` object. For the request above, it has this shape:
+
+```json
+{
+  "data": {
+    "id": 42,
+    "destination": "Bergen",
+    "start_date": "2026-08-10",
+    "end_date": "2026-08-14",
+    "duration_days": 5,
+    "type": "family",
+    "transport": "train",
+    "accommodation": "hotel",
+    "activities": ["hiking", "museums"],
+    "description": "A summer trip"
+  }
+}
+```
 
 ### Responses and errors
 
